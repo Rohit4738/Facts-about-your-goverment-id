@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashbang Effect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            overflow: hidden;
+        }
+        
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Much darker overlay */
+        }
+        
+        .flash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .flash {
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="image" src="https://raw.githubusercontent.com/Rohit4738/Project-1-Netflix/e5255feb7b0f992643b853eca8678df693ea61ff/Screenshot_20250528_213825.jpg" alt="Flashbang Image">
+        <div class="overlay"></div>
+    </div>
+    
+    <div class="flash-overlay" id="flashOverlay"></div>
+
+    <script>
+        // Wait for the image to load
+        window.onload = function() {
+            setTimeout(function() {
+                const flashOverlay = document.getElementById('flashOverlay');
+                // INSTANT white flash (no transition)
+                flashOverlay.classList.add('flash');
+                
+                // Make the entire screen white permanently
+                document.body.style.backgroundColor = 'white';
+                
+            }, 3000); // 3 seconds delay before flash
+        };
+    </script>
+</body>
+</html>
